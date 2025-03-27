@@ -20,7 +20,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="C:\xampp\htdocs\SINA\script.js"></script>
 </head>
 <body>
 
@@ -81,7 +80,7 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-success mt-2" onclick="adicionarMatricula()">Adicionar Matrícula</button>
+        <button type="button" class="btn btn-success mt-2" onclick="adicionarInput()">Adicionar Matrícula</button>
 
 		<div><br></div>
 				
@@ -94,6 +93,6 @@
 
   
 </div>
-
+<script src="script.js"></script>
 </body>
 </html>

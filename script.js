@@ -1,17 +1,14 @@
-function adicionarMatricula() {
-    let container = document.getElementById("matriculas-container");
-    let div = document.createElement("div");
-    div.className = "input-group mt-2";
-
-    let novoInput = document.createElement("input");
-    novoInput.type = "text";
-    novoInput.name = "matricula_aluno[]"; 
-    novoInput.className = "form-control";
-    novoInput.placeholder = "Matrícula";
-
-
-    div.appendChild(novoInput);
-
-
-    container.appendChild(div);
+function adicionarInput() {
+    // Cria o novo elemento HTML com o input
+    const novoInput = `
+        <div class="input-group mt-2">
+            <input type="text" name="matricula_aluno[]" class="form-control" placeholder="Matrícula">
+        </div>
+    `;
+    
+    // Pega o container onde os inputs serão adicionados
+    const container = document.getElementById("matriculas-container");
+    
+    // Adiciona o novo input ao container
+    container.innerHTML += novoInput;
 }
