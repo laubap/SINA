@@ -1,13 +1,11 @@
 <?php
-		if(isset($_POST['senha']) || isset($_POST['email']) || isset($_POST['nome_completo'])){
+		if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['tipo_usuario'])){
 			$oMysql = conecta_db();
-			$query = "UPDATE tb_usuarios 
-			SET senha = '".$_POST['senha']."',
-    		email = '".$_POST['email']."',
-    		nome_completo = '".$_POST['nome_completo']."'  
-			WHERE id = ".$_GET['id'];
-
-				
+			$nome = $_POST['nome'];
+			$email = $_POST['email'];
+			$tipo = $_POST['tipo_usuario'];
+			$query = "INSERT INTO tb_usuario (Nome, Email, tipoUsuario) 
+						VALUES ('$nome', '$email', $tipo)";
 			$resultado = $oMysql->query($query);
 			header('location: index.php');
 		}
@@ -24,35 +22,56 @@
 <body>
 
 <div class="container mt-3">
-  <h2>CRUD - Update - ID: <?php echo $_GET['id']; ?></h2>
-  <p>Preencha o campo para alterar os dados existentes:</p>    
+  <h2>Insert - Usuário</h2>
+  <p>Adicione um usuário</p>    
 
 		<form
 			method="POST"
-			action="index.php?page=2&id=<?php echo $_GET['id']; ?>">
-		
+			action="index.php?page=1">
+
+			<div>
+			<label>Nome</label>
 			<input
 				type="text"
-				name="senha"
+				name="nome"
 				class="form-control"
-				placeholder="Altere aqui a senha.">
+				style="width: 400px;"
+				placeholder="Digite aqui o nome.">
+			</div>
 
+			<br/>
+
+			<div>
+			<label>Email</label>
 			<input
 				type="text"
 				name="email"
 				class="form-control"
-				placeholder="Altere aqui o email.">
-				
-			<input
-				type="text"
-				name="nome_completo"
-				class="form-control"
-				placeholder="Altere aqui o nome completo.">
+				style="width: 400px;"
+				placeholder="Digite aqui o email.">
+			</div>
 
+			<br/>
+
+			<div>
+			<label>Tipo de Usuario</label>
+			<input
+				type="number"
+				name="tipo_usuario"
+				class="form-control"
+				style="width: 50px;">
+			</div>
+		
+			<br/>
+				
 			<button
 				type="submit"
 				class="btn btn-primary"> Enviar </button>
+		
 		</form>
+
+
+  
 </div>
 
 </body>

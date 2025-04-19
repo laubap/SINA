@@ -1,6 +1,6 @@
 <?php
 	function conecta_db(){
-		$db_name = "SINA";
+		$db_name = "sina";
 		$user	 = "root";
 		$pass    = "";
 		$server  = "localhost:3306";
