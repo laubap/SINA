@@ -10,7 +10,7 @@
 			$query = "UPDATE tb_aluno
 				SET Nome = '$nome',
 					Idade = $idade,
-					dataNasc = $data,
+					dataNasc = '$data',
 					Turma_idTurma = $turma
 				WHERE idAluno = ".$_GET['idAluno'];
 			$resultado = $oMysql->query($query);
@@ -19,13 +19,7 @@
 
 
 
-		$turmas = $oMysql->query("SELECT
-    	a.*,
-    	u.Nome AS Nome_Turma
-		FROM
-    	tb_aluno a
-		JOIN
-    	tb_turma u");
+		$turmas = $oMysql->query("SELECT * FROM tb_turma");
 
     	if (isset($_POST['id_turma'])) {
     		$id_turma = $_POST['id_turma'];
@@ -43,12 +37,12 @@
 <body>
 
 <div class="container mt-3">
-  <h2>Usuário ID: <?php echo $_GET['Turma_idTurma']; ?></h2>
-  <p>Alterar dados de usuário:</p>    
+  <h2>Aluno ID: <?php echo $_GET['idAluno']; ?></h2>
+  <p>Alterar dados de aluno:</p>    
 
 		<form
 			method="POST"
-			action="index.php?page=2&idTurma=<?php echo $_GET['idAluno']; ?>">
+			action="index.php?page=2&idAluno=<?php echo $_GET['idAluno']; ?>">
 
 			<?php
 				$oMysql = conecta_db();
@@ -71,7 +65,7 @@
 						$nome = $linha->Nome;
 						$idade = $linha->Idade;
 						$data = $linha->dataNasc;
-						$turma = $linha->Nome_Turma;
+						$id_turma = $linha->Turma_idTurma;
 					}
 				}
 
@@ -124,11 +118,11 @@
 
 				<?php
 					$selected = "";
-					if($idTurma == $row['Turma_idTurma']){
+					if($id_turma == $row['idTurma']){
 						$selected = "selected";
 					}
 				?>
-          		<option value="<?= $row['Turma_idTurma'] ?>" <?=$selected?>><?= $row['Nome_Turma'] ?></option>
+          		<option value="<?= $row['idTurma'] ?>" <?=$selected?>><?= $row['Nome'] ?></option>
         		<?php endwhile; ?>
       		</select>
 			</div>

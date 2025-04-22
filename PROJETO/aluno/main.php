@@ -36,7 +36,7 @@
 		FROM
     	tb_aluno a
 		JOIN
-    	tb_turma u";
+    	tb_turma u ON a.Turma_idTurma = u.idTurma";
 
 		$resultado = $oMysql->query($query);
 		if($resultado){

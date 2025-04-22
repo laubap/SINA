@@ -8,7 +8,7 @@
 			$turma = $_POST['id_turma'];
 			$data = $_POST['data_nasc'];
 			$query = "INSERT INTO tb_aluno (Nome, Idade, dataNasc, Turma_idTurma) 
-						VALUES ('$nome',$idade,$data,$turma);";
+						VALUES ('$nome',$idade,'$data',$turma);";
 			$resultado = $oMysql->query($query);
 			header('location: index.php');
 		}
