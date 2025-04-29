@@ -13,7 +13,10 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.php">Home</a>
+        <a class="nav-link" href="index.php">Voltar</a>
+      </li>
+      <li>
+        <a class="nav-link" href="../index.php">Home</a>
       </li>
     </ul>
   </div>
