@@ -1,11 +1,12 @@
 <?php
-		if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['tipo_usuario'])){
+		if(isset($_POST['nome']) && isset($_POST['email'])  && isset($_POST['cpf']) && isset($_POST['senha'])){
 			$oMysql = conecta_db();
 			$nome = $_POST['nome'];
 			$email = $_POST['email'];
-			$tipo = $_POST['tipo_usuario'];
-			$query = "INSERT INTO tb_usuario (Nome, Email, tipoUsuario) 
-						VALUES ('$nome', '$email', $tipo)";
+			$cpf = $_POST['cpf'];
+			$senha = $_POST['senha'];
+			$query = "INSERT INTO tb_usuario (Nome, Email, cpf, senha) 
+          VALUES ('$nome', '$email', '$cpf', '$senha')";
 			$resultado = $oMysql->query($query);
 			header('location: index.php');
 		}
@@ -54,15 +55,26 @@
 			<br/>
 
 			<div>
-			<label>Tipo de Usuario</label>
+			<label>Cpf</label>
 			<input
 				type="number"
-				name="tipo_usuario"
+				name="cpf"
 				class="form-control"
-				style="width: 50px;">
+				style="width: 400px;"
+				placeholder="Digite aqui o cpf.">
 			</div>
 		
 			<br/>
+
+			<div>
+			<label>Senha</label>
+			<input
+				type="password"
+				name="senha"
+				class="form-control"
+				style="width: 400px;"
+				placeholder="Digite aqui a senha.">
+			</div>
 				
 			<button
 				type="submit"

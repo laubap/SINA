@@ -21,7 +21,8 @@
         <th>ID</th>
         <th>Descrição</th>
 		<th>Email</th>
-		<th>Tipo de Usuario</th>
+		<th>Cpf</th>
+		<th>Senha</th>
       </tr>
     </thead>
     <tbody>
@@ -43,7 +44,9 @@
 				$html .= "<td>".$linha->idUsuario."</td>";
 				$html .= "<td>".$linha->Nome."</td>";
 				$html .= "<td>".$linha->Email."</td>";
-				$html .= "<td>".$linha->tipoUsuario."</td>";
+				$html .= "<td>".$linha->cpf."</td>";
+				$html .= "<td>".$linha->senha."</td>";
+				
 				$html .= "</tr>";
 				echo $html;
 			}

@@ -1,13 +1,15 @@
 <?php
-		if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['tipo_usuario'])){
+		if(isset($_POST['nome']) && isset($_POST['email'])&& isset($_POST['cpf'])  && isset($_POST['senha'])){
 			$oMysql = conecta_db();
 			$nome = $_POST['nome'];
 			$email = $_POST['email'];
-			$tipo = $_POST['tipo_usuario'];
+			$cpf = $_POST['cpf'];
+			$senha = $_POST['senha'];
 			$query = "UPDATE tb_usuario 
 				SET Nome = '$nome',
 					Email = '$email',
-					tipoUsuario = $tipo
+					cpf = '$cpf',
+					senha = '$senha'
 				WHERE idUsuario = ".$_GET['idUsuario'];
 			$resultado = $oMysql->query($query);
 			header('location: index.php');
@@ -39,12 +41,15 @@
 
 				$nome = "";
 				$email = "";
-				$tipo = "";
+				$cpf = "";
+				$senha = "";
+
 				if($resultado){
 					while($linha = $resultado->fetch_object()){
 						$nome = $linha->Nome;
 						$email = $linha->Email;
-						$tipo = $linha->tipoUsuario;
+						$cpf = $linha->cpf;
+						$senha = $linha->senha;
 					}
 				}
 
@@ -73,18 +78,30 @@
 				placeholder="Digite aqui o email.">
 			</div>
 
-			<br/>
-
 			<div>
-			<label>Tipo de Usuario</label>
+			<label>Cpf</label>
 			<input
 				type="number"
-				name="tipo_usuario"
-				value="<?php echo $tipo;?>"
+				name="cpf"
+				value="<?php echo $cpf;?>"
 				class="form-control"
-				style="width: 50px;">
+				style="width: 400px;"
+				placeholder="Digite aqui o cpf.">
 			</div>
 
+			
+			<div>
+			<label>Senha</label>
+			<input
+				type="password"
+				name="senha"
+				value="<?php echo $senha;?>"
+				class="form-control"
+				style="width: 400px;"
+				placeholder="Digite aqui a senha.">
+			</div>
+
+			<br/>
 			<br/>
 
 			<button
