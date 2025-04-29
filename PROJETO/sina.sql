@@ -67,3 +67,7 @@ CREATE TABLE tb_comunicado (
     FOREIGN KEY (Turma_idTurma) REFERENCES tb_turma(idTurma),
     FOREIGN KEY (Turma_Professor_Usuario_idUsuario) REFERENCES tb_professor(Usuario_idUsuario)
 );
+
+ALTER TABLE tb_usuario
+ADD COLUMN cpf VARCHAR(14) NOT NULL,
+ADD COLUMN senha VARCHAR(100) NOT NULL
