@@ -1,0 +1,85 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* overflow: hidden; */
+    background-color: rgb(241, 241, 241);
+    
+}
+
+.navegador{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 20vh;
+    gap: 20px;
+    box-shadow: 2px 2px 40px 3px rgb(0 0 0 / 20%);
+    position: fixed;
+    
+}
+
+.navegador button{
+    height: 35px;
+    background-color: transparent;
+}
+.navegador button:hover{
+    background-color: rgba(113, 97, 255, 0.187);
+}
+
+.main{
+    display: flex;
+   
+}
+
+
+.main .alunos{
+    margin-left: 20vh;
+    height: 100vh;
+    width: 50vh;
+}
+
+.main .alunos h1{
+    color: black ;
+    margin-left: 5vh;
+}
+
+.main .alunos p{
+    color: black ;
+    margin-left: 5vh;
+}
+.main .alunos .filtros .pesquisaAluno{
+   
+    border-radius: 10px;
+    box-shadow: none;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 40vh;
+    height: 5vh;
+    margin-right: 2vh;
+}
+
+.main .alunos .filtros .drop{
+   
+    border-radius: 10px;
+    box-shadow: none;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 20vh;
+    height: 5vh;
+    
+}
+
+.main .alunos .filtros{
+    display: flex;
+    margin-top: 8vh;
+    margin-left: 90vh;
+}
+
+.main .alunos .lenda{
+    display: flex;
+    /* position: fixed;
+    background-color: rgb(241, 241, 241); */
+}
+
+
