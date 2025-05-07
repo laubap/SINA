@@ -51,8 +51,8 @@ body {
 }
 .login .logo{
     height: 5vh;
-    margin-right: 62vh;
-    margin-top: -15vh;
+    margin-right: 42vh;
+    margin-top: 0vh;
    
 }
     
@@ -115,6 +115,24 @@ body {
 
     background-color: rgba(7, 0, 75, 0.635);
 }
+
+
+.box-texto {
+    text-align: center;
+}
+
+.titulo {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 0.5em;
+}
+
+.descricao {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.5;
+}
+
 
 
 /* .imagemLogin img{

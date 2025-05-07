@@ -51,8 +51,8 @@ body {
 }
 .login .logo{
     height: 5vh;
-    margin-right: 62vh;
-    margin-top: -15vh;
+    margin-right: 40vh;
+    margin-top: 0vh;
    
 }
     
@@ -114,6 +114,30 @@ body {
 .login  .tipoUsuario .usuario3:hover{
 
     background-color: rgba(7, 0, 75, 0.635);
+}
+
+
+.voltarLogin {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(113, 97, 255);;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.voltarLogin:hover {
+    background-color: #5a6268;
+}
+
+.descricao {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
 }
 
 

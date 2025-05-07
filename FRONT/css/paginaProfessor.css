@@ -16,7 +16,7 @@ html, body {
     gap: 20px;
     box-shadow: 2px 2px 40px 3px rgb(0 0 0 / 20%);
     position: fixed;
-    
+    text-align: center;
 }
 
 .navegador button{
@@ -37,6 +37,7 @@ html, body {
     margin-left: 20vh;
     height: 100vh;
     width: 50vh;
+    text-align: center;
 }
 
 .main .alunos h1{
@@ -48,7 +49,7 @@ html, body {
     color: black ;
     margin-left: 5vh;
 }
-.main .alunos .filtros .pesquisaAluno{
+.main .alunos {
    
     border-radius: 10px;
     box-shadow: none;
@@ -59,7 +60,7 @@ html, body {
     margin-right: 2vh;
 }
 
-.main .alunos .filtros .drop{
+.main .alunos{
    
     border-radius: 10px;
     box-shadow: none;
@@ -70,7 +71,7 @@ html, body {
     
 }
 
-.main .alunos .filtros{
+.main .alunos{
     display: flex;
     margin-top: 8vh;
     margin-left: 90vh;
@@ -82,4 +83,51 @@ html, body {
     background-color: rgb(241, 241, 241); */
 }
 
+.nav-link {
+    display: block;
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: rgb(113, 97, 255);;
+    text-decoration: none;
+    font-weight: bold;
+}
 
+.nav-link:hover {
+    text-decoration: underline;
+    color: rgb(113, 97, 255);
+}
+
+.barra-pesquisa {
+    position: absolute;
+    top: 15px;
+    right: 100px; 
+
+  }
+  
+  .barra-pesquisa input {
+    width: 350px; 
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  .conteudo {
+    flex: 1; 
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .conteudo h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .conteudo p {
+    font-size: 18px;
+    color: #666;
+  }
+  

@@ -1,57 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/paginaProfessor.css">
-    <link rel="stylesheet" href="../css/normalize.css">
-    <title>Sina</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/paginaProfessor.css">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <title>Sina</title>
 </head>
 
 <body>
-    <div class="main">
+  <div class="main">
+    <div class="navegador">
+      <img class="logo" src="../imagens/Sem título.jpeg" alt="Logo">
+      <a href="#" onclick="carregarConteudo('aluno')">Alunos</a>
+      <a href="#" onclick="carregarConteudo('turma')">Turmas</a>
+      <a href="#" onclick="carregarConteudo('agenda')">Agenda</a>
+      <a href="#" onclick="carregarConteudo('configuracoes')">Configurações</a>
+      <a href="index.html" class="nav-link">Sair</a>
+    </div>
 
-        <div class="navegador">
-            <img class="logo" src="../imagens/Sem título.jpeg" alt="Logo">
-            <button>Alunos</button>
-            <button>Turmas</button>
-            <button>Agenda</button>
-            <button>Configurações</button>
-            <button>Sair</button>
-        </div>
+    <div class="barra-pesquisa">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
 
-
-        <div class="alunos">
-
-            <div class="lenda">
-                <div>
-                    <h1>Alunos</h1>
-                    <p> 7 Alunos encontrados</p>
-                </div>
-
-                <div class="filtros">
-                    <input class="pesquisaAluno" type="text" placeholder="pesquise os alunos">
-
-                    <select id="opcoes" class="drop" name="opcoes">
-                        <option value="1">Todos</option>
-                        <option value="2">Opção 2</option>
-                        <option value="3">Opção 3</option>
-                    </select>
-                </div>
-                
-            </div>
-            
-            <div>
-                
-            </div>
-
-            
-           
-           
-
-        </div>
-    </div>    
-        
-    
+    <!-- aqui é carregado o conteúdo dos menus na mesma pagina -->
+    <div id="conteudo" class="conteudo">
+      <p>Bem-vindo! Selecione uma opção no menu.</p>
+    </div>
+  </div>
+  <script src="conteudo/js/carregaconteudo.js"></script>
 </body>
 </html>
