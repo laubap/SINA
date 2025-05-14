@@ -1,0 +1,133 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* overflow: hidden; */
+    background-color: rgb(241, 241, 241);
+    
+}
+
+.navegador{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 20vh;
+    gap: 20px;
+    box-shadow: 2px 2px 40px 3px rgb(0 0 0 / 20%);
+    position: fixed;
+    text-align: center;
+}
+
+.navegador button{
+    height: 35px;
+    background-color: transparent;
+}
+.navegador button:hover{
+    background-color: rgba(113, 97, 255, 0.187);
+}
+
+.main{
+    display: flex;
+   
+}
+
+
+.main .alunos{
+    margin-left: 20vh;
+    height: 100vh;
+    width: 50vh;
+    text-align: center;
+}
+
+.main .alunos h1{
+    color: black ;
+    margin-left: 5vh;
+}
+
+.main .alunos p{
+    color: black ;
+    margin-left: 5vh;
+}
+.main .alunos {
+   
+    border-radius: 10px;
+    box-shadow: none;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 40vh;
+    height: 5vh;
+    margin-right: 2vh;
+}
+
+.main .alunos{
+   
+    border-radius: 10px;
+    box-shadow: none;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 20vh;
+    height: 5vh;
+    
+}
+
+.main .alunos{
+    display: flex;
+    margin-top: 8vh;
+    margin-left: 90vh;
+}
+
+.main .alunos .lenda{
+    display: flex;
+    /* position: fixed;
+    background-color: rgb(241, 241, 241); */
+}
+
+.nav-link {
+    display: block;
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: rgb(113, 97, 255);;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+    color: rgb(113, 97, 255);
+}
+
+.barra-pesquisa {
+    position: absolute;
+    top: 15px;
+    right: 100px; 
+
+  }
+  
+  .barra-pesquisa input {
+    width: 350px; 
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  .conteudo {
+    flex: 1; 
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .conteudo h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .conteudo p {
+    font-size: 18px;
+    color: #666;
+  }
+  

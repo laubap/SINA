@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/paginaResponsavel.css">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <title>Sina</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="navegador">
+      <img class="logo" src="../imagens/Sem título.jpeg" alt="Logo">
+      <a href="#" onclick="carregarConteudo('agenda')">Agenda</a>
+      <a href="#" onclick="carregarConteudo('configuracoes')">Configurações</a>
+      <a href="index.html" class="nav-link">Sair</a>
+    </div>
+
+    <div class="barra-pesquisa">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+
+    <!-- aqui é carregado o conteúdo dos menus na mesma pagina -->
+    <div id="conteudo" class="conteudo">
+      <p>Bem-vindo! Selecione uma opção no menu.</p>
+    </div>
+  </div>
+  <script src="conteudo/js/carregaconteudo.js"></script>
+</body>
+</html>
