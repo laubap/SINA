@@ -9,8 +9,7 @@
 				SET Aluno_idAluno = $aluno,
 					Responsavel_idUsuario = $responsavel
 				WHERE Aluno_idAluno = ".$_GET['Aluno_idAluno'].
-				"AND Responsavel_idUsuario = ".$_GET['Responsavel_idUsuario']
-				;
+				"AND Responsavel_idUsuario = ".$_GET['Responsavel_idUsuario'];
 			$resultado = $oMysql->query($query);
 			header('location: index.php');
 		}
