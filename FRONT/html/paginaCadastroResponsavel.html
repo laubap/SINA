@@ -1,3 +1,39 @@
-<h2>responsavel </h2>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/paginaCadastro.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <title>Sina</title>
+</head>
+<body>
+    <div class="blocoPrincipal">
+        <div class="login">
+            <img class="logo" src="../imagens/Sem título.jpeg" alt="">
 
+            <h1>Sign In!</h1>
+            <p class="descricao">
+                Faça o seu cadastro no <strong>SINA</strong> <br>
+                se for seu primeiro acesso como <strong>responsável</strong>
+            </p>
 
+            <form action="http://localhost/SINA/BACK/cadastroResponsavel.php" method="POST">
+                <input type="text" name="nomeResponsavel" class="inputLogin" placeholder="Digite o seu nome" required>
+                <input type="email" name="emailResponsavel" class="inputLogin" placeholder="Digite o seu email" required>
+                <div id="matriculaContainer" class="grupo-matriculas">
+                    <input type="text" name="matriculaAluno[]" class="inputLogin" placeholder="Digite a matrícula do aluno" required>
+                  </div>
+                  <button type="button" onclick="adicionarCampo()">+ Adicionar outra matrícula</button>                  
+                <input type="password" name="senhaResponsavel" class="inputLogin" placeholder="Digite a sua senha" required>
+                <input type="password" name="confirmaSenha" class="inputLogin" placeholder="Confirme a sua senha" required>
+                <button type="submit" class="loginButton">Cadastre-se</button>
+                <a href="index.html" class="loginButton">Sair</a>
+            </form>
+            
+        </div>
+    </div>
+
+    <script src="../js/adicionaMatricula.js"></script>
+</body>
+</html>
