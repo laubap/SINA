@@ -15,40 +15,40 @@
 
     <div class="container">
         <div class="row justify-content-center g-4">
-            <!-- Bloco 1 -->
+            <!-- responsavel -->
             <div class="col-md-4">
-                <div class="bloco">
+                <div class="bloco text-center">
                     <img src="../imagens/family.png" class="imagem-bloco" alt="Imagem 1">
                     <br>
-                    <a href="loginbase.html">
+                    <a href="loginbase.html" onclick="setTipoUsuario('responsavel'); return true;">
                         <button class="btn btn-outline-primary w-100">Responsável</button>
                     </a>
                 </div>
             </div>
 
-            <!-- Bloco 2 -->
+            <!-- prof -->
             <div class="col-md-4">
-                <div class="bloco">
+                <div class="bloco text-center">
                     <img src="../imagens/chalkboard-user (1).png" class="imagem-bloco" alt="Imagem 2">
                     <br>
-                    <a href="loginbase.html">
+                    <a href="loginbase.html" onclick="setTipoUsuario('professor'); return true;">
                         <button class="btn btn-outline-primary w-100">Professor</button>
                     </a>
                 </div>
             </div>
 
-            <!-- Bloco 3 -->
+            <!-- coordenador -->
             <div class="col-md-4">
-                <div class="bloco">
+                <div class="bloco text-center">
                     <img src="../imagens/hr-management.png" class="imagem-bloco" alt="Imagem 3">
                     <br>
-                    <a href="loginbase.html">
+                    <a href="loginbase.html" onclick="setTipoUsuario('coordenador'); return true;">
                         <button class="btn btn-outline-primary w-100">Coordenador</button>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
+    <script src="../js/selecaoUsuario.js"></script>
 </body>
 </html>
