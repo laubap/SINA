@@ -23,23 +23,20 @@
                 </h1>
 
                 <p class="descricao">Faça o seu cadastro no <strong>SINA</strong> <br> se for seu primeiro acesso como <strong>coordenador </strong></p>
-             
-                <input type="text" id="inputLogin" name="inputLogin" class = "inputLogin" placeholder= "digite o seu nome">
+                <form action="http://localhost/SINA/BACK/cadastroCoordenador.php" method="POST">
+                <input type="text"  name="nomeCoordenador"  class = "inputLogin" placeholder= "digite o seu nome">
               
-                <input type="text" id="inputLogin" name="inputLogin" class = "inputLogin" placeholder= "digite o seu cpf">
+                <input type="text"  name="cpfCoordenador"  class = "inputLogin" placeholder= "digite o seu cpf">
 
-                <input type="text" id="inputLogin" name="inputLogin" class = "inputLogin" placeholder= "digite o seu email">
+                <input type="text"  name="emailCoordenador" class = "inputLogin" placeholder= "digite o seu email">
               
-                <input type="text" id="inputLogin" name="inputLogin" class = "inputLogin" placeholder= "digite a sua senha">
+                <input type="password"  name="senhaCoordenador" class = "inputLogin" placeholder= "digite a sua senha">
                
-                <input type="text" id="inputLogin" name="inputLogin" class = "inputLogin" placeholder= "confirme a sua senha">
+                <input type="password"  name="confirmaSenha"  class = "inputLogin" placeholder= "confirme a sua senha">
+                <button type="submit" class="loginButton">Cadastre-se</button>
+                </form>
 
-
-                <button class= "loginButton">
-                    Cadastre-se
-                </button>
-
-                <a href="loginbase.html" class="loginButton">Voltar ao Login</a>
+                <a href="index.html" class="loginButton">Sair</a>
 
 
         </div>
