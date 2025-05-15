@@ -140,6 +140,14 @@ body {
     text-align: center;
 }
 
+.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
 
 /* .imagemLogin img{
     width: 100%; 
