@@ -10,8 +10,8 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
 
     // Verifica em cada tabela
     $consultas = [
-        ['tb_coordenador', 'emailCoordenador', 'senhaCoordenador', 3, 'paginaCoordenador.html'],
-        ['tb_professor', 'emailProfessor', 'senhaProfessor', 2, 'paginaProfessor.html'],
+        ['tb_coordenador', 'emailCoordenador', 'senhaCoordenador', 3, 'paginaCoordenador.php'],
+        ['tb_professor', 'emailProfessor', 'senhaProfessor', 2, 'paginaProfessor.php'],
         ['tb_responsavel', 'emailResponsavel', 'senhaResponsavel', 1, 'paginaResponsavel.php']
     ];
 

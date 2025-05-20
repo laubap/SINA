@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/paginaProfessor.css">
   <link rel="stylesheet" href="../css/normalize.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+
+
+
   <title>Sina</title>
 </head>
 
@@ -12,7 +21,7 @@
   <div class="main">
     <div class="navegador">
       <img class="logo" src="../imagens/Sem título.jpeg" alt="Logo">
-      <a href="#" onclick="carregarConteudo('cadastroAluno')"> Cadastro de aluno</a>
+      <a href="#" onclick="carregarConteudo('aluno')">Alunos</a>
       <a href="#" onclick="carregarConteudo('turma')">Turmas</a>
       <a href="#" onclick="carregarConteudo('agenda')">Agenda</a>
       <a href="#" onclick="carregarConteudo('configuracoes')">Configurações</a>
