@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (tipo === 'professor') {
             link.href = '../html/paginaCadastroProfessor.html';
         } else if (tipo === 'responsavel') {
-            link.href = '../html/paginaCadastroResponsavel.php';
+            link.href = '../html/paginaCadastroResponsavel.html';
         } else if (tipo === 'coordenador') {
             link.href = '../html/paginaCadastroCoordenador.html';
         } else {
