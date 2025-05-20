@@ -12,7 +12,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     $consultas = [
         ['tb_coordenador', 'emailCoordenador', 'senhaCoordenador', 3, 'paginaCoordenador.html'],
         ['tb_professor', 'emailProfessor', 'senhaProfessor', 2, 'paginaProfessor.html'],
-        ['tb_responsavel', 'emailResponsavel', 'senhaResponsavel', 1, 'paginaResponsavel.html']
+        ['tb_responsavel', 'emailResponsavel', 'senhaResponsavel', 1, 'paginaResponsavel.php']
     ];
 
     foreach ($consultas as [$tabela, $campoEmail, $campoSenha, $tipo, $pagina]) {
