@@ -11,7 +11,7 @@
     <div class="blocoPrincipal">
         <div class="login">
 
-            <h1>CADASTROS DE ALUNO</h1>
+            <h1>CADASTRO DE ALUNO</h1>
             <p class="descricao">
                 Faça o cadastro no <strong>SINA</strong> <br>
                 de um  <strong>aluno</strong>

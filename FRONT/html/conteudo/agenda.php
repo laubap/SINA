@@ -3,13 +3,30 @@
     <p>Comunicados Da Turma</p>
 
 
+<!-- Comando php para botão "criar comunicado" aparecer somente para professor -->
+
+    <?php
+    session_start();
+
+    if($_SESSION['tipoUsuario'] == 2)
+    {
+    ?>
+
 <div class="botao">
     <a href="">
         <button class="btn btn-success">Criar Comunicado</button>
     </a>
 </div>
 <br>
+    <?php
+    }
+    ?>
 
+
+
+
+
+    <br>    
 
 <!-- COMUNICADOS -->
 
