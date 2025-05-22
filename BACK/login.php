@@ -8,12 +8,28 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
 
     $db = conecta_db();
 
-    // Verifica em cada tabela
-    $consultas = [
-        ['tb_coordenador', 'emailCoordenador', 'senhaCoordenador', 3, 'paginaCoordenador.php'],
-        ['tb_professor', 'emailProfessor', 'senhaProfessor', 2, 'paginaProfessor.php'],
-        ['tb_responsavel', 'emailResponsavel', 'senhaResponsavel', 1, 'paginaResponsavel.php']
+
+
+    // Tabelas para a consulta do login
+
+    $consultasDisponiveis = [
+        'coordenador' => ['tb_coordenador', 'emailCoordenador', 'senhaCoordenador', 3, 'paginaCoordenador.php'],
+        'professor' => ['tb_professor', 'emailProfessor', 'senhaProfessor', 2, 'paginaProfessor.php'],
+        'responsavel' => ['tb_responsavel', 'emailResponsavel', 'senhaResponsavel', 1, 'paginaResponsavel.php']
     ];
+
+    //recebe por POST o tipo de login do arquivo loginBase.js
+    $tipoLogin = $_POST['tipoUsuario'] ?? null;
+
+
+    //Filtra o login, fazendo a busca apenas na tabela do tipo de usuario selecionado
+    if ($tipoLogin && isset($consultasDisponiveis[$tipoLogin])) {
+        $consultas = [$consultasDisponiveis[$tipoLogin]];
+    }
+
+
+
+
 
     foreach ($consultas as [$tabela, $campoEmail, $campoSenha, $tipo, $pagina]) {
         $query = "SELECT u.idUsuario, u.tipoUsuario, c.$campoSenha 

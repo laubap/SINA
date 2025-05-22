@@ -16,6 +16,14 @@
   <title>Sina</title>
 </head>
 
+<?php
+    session_start();
+    if($_SESSION['tipoUsuario'] != 3){
+      header("Location: index.html");
+    }
+?>
+
+
 <body>
   <div class="main">
     <div class="navegador">

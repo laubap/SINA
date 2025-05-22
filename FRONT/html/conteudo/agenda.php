@@ -2,11 +2,17 @@
     <h2>Agenda</h2>
     <p>Comunicados Da Turma</p>
 
-
 <!-- Comando php para botão "criar comunicado" aparecer somente para professor -->
-
     <?php
     session_start();
+
+
+#<!-- Ver tipo e id de usuario logado --> APAGAR DEPOIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    echo $_SESSION['usuario'],"\n";
+    echo $_SESSION['tipoUsuario'];
+
+
 
     if($_SESSION['tipoUsuario'] == 2)
     {
@@ -39,11 +45,16 @@
 
 
     #query para selecionar todos os comunicados da tb_comunicado
+    #essa query vai selecionar somente os comunicados relacionados ao id do usuário logado
 
-    $sql = "SELECT c.*, p.nomeProfessor 
+    $sql = "SELECT 
+            c.*, p.nomeProfessor
             FROM tb_comunicado c
             JOIN tb_professor p ON c.idProfessor = p.idUsuario
-            ORDER BY Data DESC";
+            JOIN tb_turma t ON c.idTurma = t.idTurma
+            JOIN tb_aluno a ON a.Turma_idTurma = t.idTurma
+            JOIN tb_responsavel_aluno ra ON ra.matriculaAluno = a.matriculaAluno
+            WHERE ra.idUsuario = ".$_SESSION['usuario'];
 
     $resultado = $oMysql->query($sql);
 
@@ -64,7 +75,7 @@
             echo '
             <div class="comunicado">
                 <div class="comunicado-header">
-                    <div>'.$linha['nomeProfessor'].'</div>
+                    <div>'.$linha['nomeProfessor'].' - '.$linha['idTurma'].'</div>
                     <div>'.$data.' - '.$hora.'</div>
                 </div>
                 <div class="comunicado-body">

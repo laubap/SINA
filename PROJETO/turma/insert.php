@@ -13,12 +13,11 @@
 		}
 
 
-		$professores = $oMysql->query("SELECT p.*,
-    	u.Nome AS Nome
+		$professores = $oMysql->query("SELECT
+    	p.nomeProfessor AS Nome,
+		idUsuario
 		FROM
-    	tb_professor p
-		JOIN
-    	tb_usuario u ON p.Usuario_idUsuario = u.idUsuario;");
+    	tb_professor p");
 
     	if (isset($_POST['id_professor'])) {
     		$id_professor = $_POST['id_professor'];
@@ -73,7 +72,7 @@
 			<select name="id_professor" class="form-control" style="width: 400px;">
         	<option value="">Selecione um professor</option>
         	<?php while($row = $professores->fetch_assoc()): ?>
-          		<option value="<?= $row['Usuario_idUsuario'] ?>"><?= $row['Nome'] ?></option>
+          		<option value="<?= $row['idUsuario'] ?>"><?= $row['Nome'] ?></option>
         		<?php endwhile; ?>
       		</select>
 			</div>

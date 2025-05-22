@@ -12,6 +12,22 @@
   <title>Sina</title>
 </head>
 
+<?php
+    session_start();
+
+
+#<!-- Ver tipo e id de usuario logado --> APAGAR DEPOIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    echo $_SESSION['usuario'],"\n";
+    echo $_SESSION['tipoUsuario'];
+
+
+
+    if($_SESSION['tipoUsuario'] != 1){
+      header("Location: ../FRONT/html/index");
+    }
+?>
+
 <body>
   <div class="main">
     <div class="navegador">
