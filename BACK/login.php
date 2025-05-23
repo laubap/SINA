@@ -50,14 +50,22 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                 header("Location: ../FRONT/html/$pagina");
                 exit;
             } else {
-                die("Senha incorreta.");
+
+                // Se a senha estiver errada vai criar uma mensagem de erro e enviar para o get_mensagem.php, para ser usado no alert.js
+                $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Senha incorreta'];
+                header("Location: ../FRONT/html/loginbase.html");
+                exit;
             }
         }
 
         $stmt->close();
     }
 
-    echo "Usuário não encontrado.";
+    // Se o usuario n for encontrado dentro das 3 listas, vai criar uma mensagem de erro e enviar para o get_mensagem.php para ser usado no alert.js
+    $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Usuário não encontrado'];
+    header("Location: ../FRONT/html/loginbase.html");
+    exit;
+
     $db->close();
 }
 ?>
