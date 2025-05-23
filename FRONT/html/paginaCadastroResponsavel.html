@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- LINK CSS -->
+
     <link rel="stylesheet" href="../css/paginaCadastro.css">
     <link rel="stylesheet" href="../css/normalize.css">
+
+
+
+<!-- LINK JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/alert.js"></script>
+
+
     <title>Sina</title>
 </head>
 <body>
@@ -24,7 +37,7 @@
                 <div id="matriculaContainer" class="grupo-matriculas">
                     <input type="text" name="matriculaAluno[]" class="inputLogin" placeholder="Digite a matrícula do aluno" required>
                   </div>
-                  <button type="button" onclick="adicionarCampo()">+ Adicionar outra matrícula</button>                  
+                <button type="button" onclick="adicionarCampo()">+ Adicionar outra matrícula</button>                  
                 <input type="password" name="senhaResponsavel" class="inputLogin" placeholder="Digite a sua senha" required>
                 <input type="password" name="confirmaSenha" class="inputLogin" placeholder="Confirme a sua senha" required>
                 <button type="submit" class="loginButton">Cadastre-se</button>

@@ -33,7 +33,9 @@ body {
     align-items: center;
     box-shadow: 2px 2px 40px 3px rgb(0 0 0 / 20%);
     border-radius: 20px;
-    justify-content: center;
+    overflow-y: auto;
+    padding: 20px;
+
 }
 
 .login .inputLogin{
@@ -154,6 +156,12 @@ body {
     gap: 10px;
     width: 100%;
     align-items: center;
+    /* Adicionar barra de rolagem quando tiver muitos campos de matrícula */
+    max-height: 30vh;  
+    overflow-y: auto;
+    padding-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
 .grupo-matriculas input.inputLogin {
