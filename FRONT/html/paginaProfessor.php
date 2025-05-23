@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<!-- LINK JS-->
 
+    <script src="../js/loginbase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/alert.js"></script>
 
 
   <title>Sina</title>
@@ -19,8 +23,10 @@
 
 <?php
     session_start();
-    if($_SESSION['tipoUsuario'] != 2){
-      header("Location: index.html");
+    if((!isset($_SESSION['tipoUsuario'])) or ($_SESSION['tipoUsuario'] != 2)){
+      $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Usuário professor não logado'];
+      header("Location: loginbase.html");
+      exit;
     }
 ?>
 
@@ -35,7 +41,7 @@
       <a href="#" onclick="carregarConteudo('turma')">Turmas</a>
       <a href="#" onclick="carregarConteudo('agenda')">Agenda</a>
       <a href="#" onclick="carregarConteudo('configuracoes')">Configurações</a>
-      <a href="index.html" class="nav-link">Sair</a>
+      <a href="../../BACK/logout.php" class="nav-link">Sair</a>
     </div>
 
     <div class="barra-pesquisa">

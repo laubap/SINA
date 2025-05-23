@@ -1,16 +1,21 @@
 window.addEventListener('DOMContentLoaded', () => {
     const tipo = sessionStorage.getItem('tipoUsuario');
     const link = document.getElementById('cadastroLink');
+    let usu = document.getElementById('tipoUsu');
 
     if (link) {
         if (tipo === 'professor') {
             link.href = '../html/paginaCadastroProfessor.html';
+            usu.textContent = "Professor";
         } else if (tipo === 'responsavel') {
             link.href = '../html/paginaCadastroResponsavel.html';
+            usu.textContent = "Reponsável";
         } else if (tipo === 'coordenador') {
             link.href = '../html/paginaCadastroCoordenador.html';
+            usu.textContent = "Coordenador";
         } else {
             link.href = '#';
+            usu.textContent = "Selecione um usuário";
         }
     }
 });
@@ -42,20 +47,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-src="https://cdn.jsdelivr.net/npm/sweetalert2@11"
-
-
-    // Exibir mensagem da sessão (se existir)
-    fetch('http://localhost/SINA/BACK/get_mensagem.php')
-    .then(response => response.json())
-    .then(data => {
-        if (data && data.tipo && data.texto) {
-            Swal.fire({
-                icon: data.tipo === 'erro' ? 'error' : 'success',
-                title: data.texto
-            });
-        }
-    });
 

@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- LINK CSS -->
+
   <link rel="stylesheet" href="../css/paginaProfessor.css">
   <link rel="stylesheet" href="../css/normalize.css">
 
@@ -11,15 +15,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
+<!-- LINK JS -->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/alert.js"></script>
 
   <title>Sina</title>
 </head>
 
 <?php
     session_start();
-    if($_SESSION['tipoUsuario'] != 3){
-      header("Location: index.html");
+    if((!isset($_SESSION['tipoUsuario'])) or ($_SESSION['tipoUsuario'] != 3)){
+      $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Usuário coordenador não logado'];
+      header("Location: loginbase.html");
+      exit;
     }
 ?>
 
@@ -32,7 +41,7 @@
       <a href="#" onclick="carregarConteudo('turma')">Turmas</a>
       <a href="#" onclick="carregarConteudo('agenda')">Agenda</a>
       <a href="#" onclick="carregarConteudo('configuracoes')">Configurações</a>
-      <a href="index.html" class="nav-link">Sair</a>
+      <a href="../../BACK/logout.php" class="nav-link">Sair</a>
     </div>
 
     <div class="barra-pesquisa">
