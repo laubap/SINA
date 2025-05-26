@@ -4,19 +4,26 @@
     <h2>Agenda</h2>
     <p>Comunicados Da Turma</p>
 
-
-<!-- Comando php para botão "criar comunicado" aparecer somente para professor -->
     <?php
+
+include "../../../PROJETO/conecta_db.php";
+
+    $oMysql = conecta_db(); 
+
+
+
     session_start();
 
-    // Verificar se há turma selecionada
+
+    #Comando php para botão "criar comunicado" aparecer somente para professor
+
+    if($_SESSION['tipoUsuario'] == 2)
+    {
+        #verificar se há turma selecionada
     if (!isset($_SESSION['idTurmaSelecionada'])) {
         $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Nenhuma turma selecionada'];
         exit;
     }
-
-    if($_SESSION['tipoUsuario'] == 2)
-    {
     ?>
 
 <div class="botao">
@@ -38,10 +45,6 @@
 
     <?php
 
-    include "../../../PROJETO/conecta_db.php";
-
-    $oMysql = conecta_db(); 
-
 
 
     #query para selecionar todos os comunicados da tb_comunicado
@@ -60,7 +63,6 @@
                 WHERE ra.idUsuario = ".$_SESSION['usuario']."
                 ORDER BY c.Data DESC";
     }
-
 
 
     #professor
@@ -98,29 +100,40 @@
     if ($resultado->num_rows > 0) {
         while ($linha = $resultado->fetch_assoc()) {
 
-            $botoes = '';
-
 
             #no banco a data está em date-time, dividir em variável "data" e "hora"
             $data = date('d/m', strtotime($linha['Data'])); 
             $hora = date('H:i', strtotime($linha['Data']));
 
+            if($_SESSION['tipoUsuario'] == 1){
+            echo '<div class="comunicado">
+                    <div class="comunicado-header">
+                        <div>Prof. '.$linha['nomeProfessor'].' - '.$linha['nomeTurma'].'</div>
+                        <div>'.$data.' - '.$hora.'</div>
+                    </div>
+                    <div class="comunicado-body">
+                        ' . nl2br($linha['Descricao']) . '
+                    </div>
+                </div>';
+            }
+
 
             if($_SESSION['tipoUsuario'] == 2 or 3){
 
                 $botoes = "<a 
-                            class='btn btn-outline-success'
-                            href='#' 
-                            onclick=\"carregarConteudo('editarComunicado', {
-                                idComunicado: ".$linha['idComunicado']."
-                            })\"
-                            >Alterar</a>";
+                class='btn btn-outline-success'
+                href='#' 
+                onclick=\"carregarConteudo('editarComunicado', { // Inicia a função com o nome da página e um objeto de parâmetros
+                    idComunicado: ".$linha['idComunicado']."      // Passa o ID do comunicado como parte do objeto
+                })\"
+                >Alterar</a>";
 
 
                 $botoes .= "<a
                             class='btn btn-outline-danger'
                             href='../../BACK/deleteComunicado.php?idComunicado=".$linha['idComunicado']."'>Excluir</a>";
-                }
+            
+        
 
             #printar template do comunicado
             echo '<div class="comunicado">
@@ -134,6 +147,11 @@
                     </div>
                 </div>';
             }
+        }
+
+
+
+        
     }
     
 

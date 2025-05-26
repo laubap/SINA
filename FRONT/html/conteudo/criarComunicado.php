@@ -10,7 +10,7 @@ if(isset($_POST['descricao'])){
     
 
 
-    // teste prepared statement pra evitar sql injection
+#teste prepared statement pra evitar sql injection
     $query = "INSERT INTO tb_comunicado (idTurma, idProfessor, Descricao) VALUES (?, ?, ?)";
     $stmt = $oMysql->prepare($query);
     $stmt->bind_param("iis", $idTurma, $idProfessor, $descricao);

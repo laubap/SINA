@@ -1,6 +1,6 @@
 <div class="pagina">
     <h2>Lista de Turmas</h2>
-    <p>Aqui estão as turmas cadastradas no sistema.</p>
+    <p>Aqui estão as turmas cadastradas no sistema</p>
 
 
 
@@ -16,23 +16,6 @@
     include "../../../PROJETO/conecta_db.php";
 
     $oMysql = conecta_db(); 
-
-
-
-
-
-
-
-
-
-    #<!-- Ver tipo e id de usuario logado --> APAGAR DEPOIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    echo $_SESSION['idTurmaSelecionada'],"\n";
-    echo $_SESSION['usuario'],"\n";
-    echo $_SESSION['tipoUsuario'];
-
-
-
 
     #query para selecionar todos as turmas da tb_turma
     #essa query vai selecionar somente as turmas relacionadas ao id do usuário logado

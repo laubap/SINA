@@ -27,11 +27,15 @@ if(isset($_POST['descricao'])){
     #se a query foi realizada, acionar mensagem de sucesso, senão erro
     if($stmt->execute()){
         $_SESSION['mensagem'] = ['tipo' => 'sucesso', 'texto' => 'Comunicado editado'];
-        header("Location: ../paginaProfessor.php");
+        $fallback = "../FRONT/index.html";
+        $anterior = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
+        header("Location: $anterior");
         exit;
     } else {
         $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao editar comunicado'];
-        header("Location: ../paginaProfessor.php");
+        $fallback = "../FRONT/index.html";
+        $anterior = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $fallback;
+        header("Location: $anterior");
         exit;
     }
     $stmt->close();
