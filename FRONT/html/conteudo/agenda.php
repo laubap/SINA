@@ -29,7 +29,6 @@ include "../../../PROJETO/conecta_db.php";
 
     session_start();
 
-
     #Comando php para botão "criar comunicado" aparecer somente para professor
 
     if($_SESSION['tipoUsuario'] == 2)
@@ -68,15 +67,21 @@ include "../../../PROJETO/conecta_db.php";
     #responsável
 
     if($_SESSION['tipoUsuario'] == 1){
+        if (!isset($_SESSION['alunoSelecionado'])) {
+            $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Nenhum aluno selecionado'];
+            exit;
+        }
         $sql = "SELECT 
                 c.*, p.nomeProfessor, t.nome as nomeTurma
                 FROM tb_comunicado c
                 JOIN tb_professor p ON c.idProfessor = p.idUsuario
                 JOIN tb_turma t ON c.idTurma = t.idTurma
-                JOIN tb_aluno a ON a.Turma_idTurma = t.idTurma
+                JOIN tb_aluno a ON a.idTurma = t.idTurma
                 JOIN tb_responsavel_aluno ra ON ra.matriculaAluno = a.matriculaAluno
                 WHERE ra.idUsuario = ".$_SESSION['usuario']."
+                AND a.matriculaAluno =".$_SESSION['alunoSelecionado']."
                 ORDER BY c.Data DESC";
+    
     }
 
 
@@ -108,6 +113,8 @@ include "../../../PROJETO/conecta_db.php";
 
     $resultado = $oMysql->query($sql);
 
+    
+
 
 
     #transformar todo o conteúdo da tb_comunicado em linhas e, se houver comunicado, printar
@@ -119,8 +126,16 @@ include "../../../PROJETO/conecta_db.php";
             #no banco a data está em date-time, dividir em variável "data" e "hora"
             $data = date('d/m', strtotime($linha['Data'])); 
             $hora = date('H:i', strtotime($linha['Data']));
+            
+            #definir botões de editar e excluir vazios
+            $botoes = "";
+
+
+#Se o tipo de usuario for "responsável" vai aparecer os comunicados sem as opções e editar e excluir
 
             if($_SESSION['tipoUsuario'] == 1){
+
+            #template comunicado
             echo '<div class="comunicado">
                     <div class="comunicado-header">
                         <div>Prof. '.$linha['nomeProfessor'].' - '.$linha['nomeTurma'].'</div>
@@ -133,7 +148,10 @@ include "../../../PROJETO/conecta_db.php";
             }
 
 
-            if($_SESSION['tipoUsuario'] == 2 or 3){
+
+#Se o tipo de usuario for "professor" ou "coordenador" vai aparecer os comunicados com as opções e editar e excluir
+
+            if($_SESSION['tipoUsuario'] == 2 || $_SESSION['tipoUsuario'] == 3){
 
                 $botoes = "<a 
                 class='btn btn-outline-success'
@@ -150,17 +168,17 @@ include "../../../PROJETO/conecta_db.php";
             
         
 
-            #printar template do comunicado
-            echo '<div class="comunicado">
-                    <div class="comunicado-header">
-                        <div>Prof. '.$linha['nomeProfessor'].' - '.$linha['nomeTurma'].'</div>
-                        <div>'.$data.' - '.$hora.'</div>
-                        <div>'.$botoes.'</div>
-                    </div>
-                    <div class="comunicado-body">
-                        ' . nl2br($linha['Descricao']) . '
-                    </div>
-                </div>';
+                #printar template do comunicado
+                echo '<div class="comunicado">
+                        <div class="comunicado-header">
+                            <div>Prof. '.$linha['nomeProfessor'].' - '.$linha['nomeTurma'].'</div>
+                            <div>'.$data.' - '.$hora.'</div>
+                            <div>'.$botoes.'</div>
+                        </div>
+                        <div class="comunicado-body">
+                            ' . nl2br($linha['Descricao']) . '
+                        </div>
+                    </div>';
             }
         }
 

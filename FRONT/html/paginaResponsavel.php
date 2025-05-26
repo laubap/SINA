@@ -7,7 +7,7 @@
 
 <!-- LINK CSS-->  
   
-  <link rel="stylesheet" href="../css/paginaResponsavel.css">
+  <link rel="stylesheet" href="../css/paginaProfessor.css">
   <link rel="stylesheet" href="../css/normalize.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -40,6 +40,7 @@
   <div class="main">
     <div class="navegador">
       <img class="logo" src="../imagens/Sem título.jpeg" alt="Logo">
+      <a href="#" class="nav-link" onclick="carregarConteudo('aluno')">Alunos</a>
       <a href="#" class="nav-link" onclick="carregarConteudo('agenda')">Agenda</a>
       <a href="#" class="nav-link" onclick="carregarConteudo('configuracoes')">Configurações</a>
       <a href="../../BACK/logout.php" class="nav-link">Sair</a>
