@@ -49,6 +49,11 @@
                 <input type="password"  name="senhaCoordenador" class = "inputLogin" placeholder= "digite a sua senha">
                
                 <input type="password"  name="confirmaSenha"  class = "inputLogin" placeholder= "confirme a sua senha">
+
+                <p>- Mínimo 8 caracteres <br>
+                    - Ao menos uma letra minúscula e maiúscula <br>
+                    - Ao menos um número <br>
+                    - Ao menos um caractere especial<p>
                 <button type="submit" class="loginButton">Cadastre-se</button>
                 </form>
 
@@ -60,3 +65,37 @@
    
 </body>
 </html>
+
+<!--
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (e) {
+        const senha = form.querySelector('input[name="senhaCoordenador"]').value;
+        const confirmaSenha = form.querySelector('input[name="confirmaSenha"]').value;
+
+        const regexSenhaForte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/;
+
+        if (!regexSenhaForte.test(senha)) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Senha fraca!',
+                text: 'A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e símbolo.'
+            });
+            return;
+        }
+
+        if (senha !== confirmaSenha) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'As senhas não coincidem',
+                text: 'Verifique se você digitou a mesma senha nos dois campos.'
+            });
+        }
+    });
+});
+</script>
+-->

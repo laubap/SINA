@@ -1,4 +1,5 @@
 <?php
+session_start();
 include(__DIR__ . "/conecta_db.php");
 
 function validarCPF($cpf) {
@@ -36,11 +37,23 @@ if (
     $confirm = $_POST['confirmaSenha'];
 
     if ($senha !== $confirm) {
-        die("As senhas não coincidem.");
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Senhas não coincidem'];
+        header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
+        exit;
     }
 
+    $regexSenhaForte = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/';
+
+    if (!preg_match($regexSenhaForte, $senha)) {
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e símbolo.'];
+        header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
+        exit;
+}
+
     if (!validarCPF($cpf)) {
-        die("CPF inválido.");
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'CPF inválido'];
+        header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
+        exit;
     }
 
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
@@ -55,7 +68,9 @@ if (
     $checkEmail->close();
 
     if ($existeEmail > 0) {
-        die("Este e-mail já está cadastrado.");
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Email já cadastrado'];
+        header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
+        exit;
     }
 
     // Verifica duplicidade de CPF
@@ -67,7 +82,9 @@ if (
     $checkCPF->close();
 
     if ($existeCPF > 0) {
-        die("Este CPF já está cadastrado.");
+       $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'CPF já cadastrado'];
+        header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
+        exit;
     }
 
     // Insere na tb_usuario
@@ -83,7 +100,7 @@ if (
         $stmt->bind_param("sisss", $cpf, $idUsuario, $nome, $email, $senhaHash);
 
         if ($stmt->execute()) {
-            header("Location: ../FRONT/html/paginaCoordenador.html");
+            header("Location: ../FRONT/html/paginaCoordenador.php");
             exit;
         } else {
             echo "Erro ao cadastrar coordenador: " . $stmt->error;

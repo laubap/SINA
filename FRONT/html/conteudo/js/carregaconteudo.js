@@ -10,5 +10,6 @@ function carregarConteudo(secao) {
       .catch(error => {
         document.getElementById("conteudo").innerHTML = "Erro ao carregar a seção.";
       });
-  }
+      
+}
   

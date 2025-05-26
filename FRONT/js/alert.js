@@ -2,6 +2,8 @@
 // Login.php vai fazer a verificação de credenciais e, caso hava algum erro, vai enviar por meio do get_mensagem.php em formato json
 // Vai pegar o arquivo json e fazer a leitura do erro para fazer a exibição SwetAlert do q aconteceu
 
+console.log("alert.js carregado");
+
 window.addEventListener('DOMContentLoaded', () => {
     fetch('../../BACK/get_mensagem.php')
         .then(response => response.json())

@@ -6,8 +6,22 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $db = conecta_db();
 
+    //Tratamento de erros para conexão do bando de dados
+    //Se n conseguir conectar ao banco, vai criar uma exceçao e o catch vai pegar, enviando erro para o get_mensagem.php
+
+    try {
+        $db = conecta_db();
+
+        if (!$db) {
+            throw new Exception("Erro ao conectar ao banco de dados");
+        }
+    }
+    catch (Exception $e) {
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao conectar ao banco de dados.'];
+        header("Location: ../FRONT/html/loginbase.html");
+        exit;
+    }
 
 
     // Tabelas para a consulta do login

@@ -48,10 +48,6 @@ echo '</pre>';
       <a href="../../BACK/logout.php" class="nav-link">Sair</a>
     </div>
 
-    <div class="barra-pesquisa">
-      <input type="text" placeholder="Pesquisar..." />
-    </div>
-
     <!-- aqui é carregado o conteúdo dos menus na mesma pagina -->
     <div id="conteudo" class="conteudo">
       <p>Bem-vindo! Selecione uma opção no menu.</p>
