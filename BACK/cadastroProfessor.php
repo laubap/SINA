@@ -44,7 +44,7 @@ if (
         $stmt->bind_param("sssi", $nome, $email, $senhaHash, $idUsuario);
 
         if ($stmt->execute()) {
-            header("Location: ../FRONT/html/paginaProfessor.html");
+            header("Location: ../FRONT/html/paginaProfessor.php");
             exit;
         } else {
             echo "Erro ao cadastrar professor: " . $stmt->error;

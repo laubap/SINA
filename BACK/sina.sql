@@ -31,7 +31,12 @@ CREATE TABLE `tb_aluno` (
   `matriculaAluno` int(11) NOT NULL,
   `NomeAluno` varchar(45) NOT NULL,
   `dataNasc` date DEFAULT NULL,
+<<<<<<< Updated upstream
   `Turma_idTurma` int(11) DEFAULT NULL
+=======
+  `Turma_idTurma` int(11) DEFAULT NULL,
+  `fotoAluno` varchar(255) DEFAULT NULL COMMENT 'Caminho/nome do arquivo da foto do aluno'
+>>>>>>> Stashed changes
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
