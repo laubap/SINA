@@ -100,15 +100,21 @@ if (
         $stmt->bind_param("sisss", $cpf, $idUsuario, $nome, $email, $senhaHash);
 
         if ($stmt->execute()) {
+            $_SESSION['tipoUsuario'] = 3;
+            $_SESSION['mensagem'] = ['tipo' => 'sucess', 'texto' => 'Coordenador cadastrado'];
             header("Location: ../FRONT/html/paginaCoordenador.php");
             exit;
         } else {
-            echo "Erro ao cadastrar coordenador: " . $stmt->error;
+            $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar coordenador'];
+            header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
+            exit;
         }
 
         $stmt->close();
     } else {
-        echo "Erro ao cadastrar usuário: " . $db->error;
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar usuário'];
+            header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
+            exit;
     }
 
     $db->close();

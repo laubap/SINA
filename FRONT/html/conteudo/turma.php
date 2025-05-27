@@ -32,7 +32,7 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
             // Mostra apenas as turmas do professor logado
             $sql = "SELECT t.* 
                     FROM tb_turma t
-                    INNER JOIN tb_professor p ON t.Professor_Usuario_idUsuario = p.idUsuario
+                    INNER JOIN tb_professor p ON t.idProfessor = p.idUsuario
                     WHERE p.idUsuario = ?";
             $stmt = $oMysql->prepare($sql);
             $stmt->bind_param("i", $_SESSION['usuario']);
@@ -44,7 +44,7 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
             // Mostra todas as turmas
             $sql = "SELECT t.*, p.nomeProfessor 
                     FROM tb_turma t
-                    LEFT JOIN tb_professor p ON t.Professor_Usuario_idUsuario = p.idUsuario
+                    LEFT JOIN tb_professor p ON t.idProfessor = p.idUsuario
                     ORDER BY t.Nome ASC";
             $resultado = $oMysql->query($sql);
             break;
@@ -81,7 +81,7 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
                         <?php if($_SESSION['tipoUsuario'] == 3 && !empty($turma['nomeProfessor'])): ?>
                             <p>Professor: <?= htmlspecialchars($turma['nomeProfessor']) ?></p>
                             <div class="turma-actions mt-2">
-                                <a href="editarTurma.php?id=<?= $turma['idTurma'] ?>" class="btn btn-sm btn-warning">
+                                <a href="conteudo/editarTurma.php?id=<?= $turma['idTurma'] ?>" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
                                 <a href="excluirTurma.php?id=<?= $turma['idTurma'] ?>" class="btn btn-sm btn-danger" 

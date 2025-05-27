@@ -1,4 +1,5 @@
 <?php
+session_start();
 include(__DIR__ . "/conecta_db.php");
 
 ini_set('display_errors', 1);
@@ -19,6 +20,14 @@ if (
 
     if ($senha !== $confirma) {
         die("As senhas não coincidem.");
+    }
+
+    $regexSenhaForte = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/';
+
+    if (!preg_match($regexSenhaForte, $senha)) {
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e símbolo.'];
+        header("Location: ../FRONT/html/paginaCadastroResponsavel.html");
+        exit;
     }
 
     $oMysql = conecta_db();
@@ -66,16 +75,20 @@ if (
 
                 $check->close();
             }
-
-            header("Location: ../FRONT/html/paginaResponsavel.html");
+            $_SESSION['mensagem'] = ['tipo' => 'sucess', 'texto' => 'Responsável cadastrado'];
+            header("Location: ../FRONT/html/paginaResponsavel.php");
             exit;
 
         } else {
-            echo "Erro ao cadastrar responsável: " . $stmt->error;
+            $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar responsável'];
+            header("Location: ../FRONT/html/paginaCadastroResponsavel.html");
+            exit;
         }
 
     } else {
-        echo "Erro ao cadastrar usuário: " . $oMysql->error;
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar usuário'];
+            header("Location: ../FRONT/html/paginaCadastroResponsavel.html");
+            exit;
     }
 
     $oMysql->close();

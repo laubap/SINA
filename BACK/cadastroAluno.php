@@ -52,7 +52,7 @@ if(isset($_POST['nomeAluno']) && isset($_POST['dataNasc'])) {
     }
 
     // Prepared statement para inserir no banco
-    $query = "INSERT INTO tb_aluno (nomeAluno, dataNasc, Turma_idTurma, fotoAluno)
+    $query = "INSERT INTO tb_aluno (nomeAluno, dataNasc, idTurma, fotoAluno)
               VALUES (?, ?, ?, ?)";
 
     $stmt = $oMysql->prepare($query);

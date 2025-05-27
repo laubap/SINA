@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/05/2025 às 00:06
+-- Tempo de geração: 28/05/2025 às 01:45
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `tb_aluno` (
   `matriculaAluno` int(11) NOT NULL,
   `NomeAluno` varchar(45) NOT NULL,
   `dataNasc` date DEFAULT NULL,
-  `Turma_idTurma` int(11) DEFAULT NULL,
+  `idTurma` int(11) DEFAULT NULL,
   `fotoAluno` varchar(255) DEFAULT NULL COMMENT 'Caminho/nome do arquivo da foto do aluno'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -39,9 +39,9 @@ CREATE TABLE `tb_aluno` (
 -- Despejando dados para a tabela `tb_aluno`
 --
 
-INSERT INTO `tb_aluno` (`matriculaAluno`, `NomeAluno`, `dataNasc`, `Turma_idTurma`) VALUES
-(1, 's', '0000-00-00', 1),
-(2, 'd', '0000-00-00', 1);
+INSERT INTO `tb_aluno` (`matriculaAluno`, `NomeAluno`, `dataNasc`, `idTurma`, `fotoAluno`) VALUES
+(1, 's', '0000-00-00', 1, NULL),
+(2, 'd', '0000-00-00', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `tb_comunicado` (
 INSERT INTO `tb_comunicado` (`idComunicado`, `idTurma`, `idProfessor`, `Data`, `Descricao`) VALUES
 (2, 1, 5, '2025-05-18 12:40:45', 'Texto do comunicado'),
 (3, 1, 5, '2025-05-18 13:16:29', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n				AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
-(4, 1, 5, '2025-05-18 13:17:02', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+(5, 2, 16, '2025-05-27 20:31:36', 'oi');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,8 @@ CREATE TABLE `tb_coordenador` (
 --
 
 INSERT INTO `tb_coordenador` (`cpfCoordenador`, `idUsuario`, `nomeCoordenador`, `emailCoordenador`, `senhaCoordenador`) VALUES
-('13341797947', 13, 'laura', 'l@gmial.com', '$2y$10$RHSZSa7ziAmY4ZVFR5Pxteg2C3vdxsvxnAt0tLhCSuWXoazqfgaMe');
+('13341797947', 13, 'laura', 'l@gmial.com', '$2y$10$RHSZSa7ziAmY4ZVFR5Pxteg2C3vdxsvxnAt0tLhCSuWXoazqfgaMe'),
+('08899666997', 19, 'leles', 'lele@gmail.com', '$2y$10$xxIpLRu5P7cJPHsoutbJI.OYAcS94q.8XkoSwRskVDW4lEivp0jNO');
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,8 @@ CREATE TABLE `tb_professor` (
 
 INSERT INTO `tb_professor` (`nomeProfessor`, `emailProfessor`, `senhaProfessor`, `idUsuario`) VALUES
 ('laura', 'laura@gmail.com', '$2y$10$hO0ED/TwsJzP9csJioJhY.VfBev7KzUoVXw5Y2zuRdU27JEPxAuOC', 5),
-('laura', 'lauraaa@gmail.com', '$2y$10$2YBWz92/lwOF/MP1IQ/VwO56FAjyuUPBjyheJwOOvGen5uisn.XBO', 6);
+('laura', 'lauraaa@gmail.com', '$2y$10$2YBWz92/lwOF/MP1IQ/VwO56FAjyuUPBjyheJwOOvGen5uisn.XBO', 6),
+('leo', 'leo@gmail.com', '$2y$10$xLPzRhk9cjvUHelaVwNx/.unoRRCURJQKlJ2xdSqRPbWJYzHeeDTm', 16);
 
 -- --------------------------------------------------------
 
@@ -142,7 +144,8 @@ INSERT INTO `tb_responsavel` (`idUsuario`, `nomeResponsavel`, `emailResponsavel`
 (8, 'lolo', 'lololololo@gmail.com', '$2y$10$zWvgmNBa3bLKhIa.sBf.Se3wHq.uK0FDoFvI3g9dRsnUVyI/qeTXC'),
 (9, 'fifi', 'fifi@gmail.com', '$2y$10$j4T6zu5/Vb5yvAul21h0Vu9NOn15/vZYoP34SJGa.WdaRFvi.XLw2'),
 (10, 'fernan', 'fernan@gmail.com', '$2y$10$/vLbrSHHxOUqck35RHH1XuXf/NeT5QPcgUAdF7oVpx1FWy89outg6'),
-(11, 'bebe', 'bebe@gmail.com', '$2y$10$Dk4eHaxARC4MUSTSFTVNFO.MGRiSPnF.j7bnDZuXqyJ3vh5hldu5W');
+(11, 'bebe', 'bebe@gmail.com', '$2y$10$Dk4eHaxARC4MUSTSFTVNFO.MGRiSPnF.j7bnDZuXqyJ3vh5hldu5W'),
+(15, 'leadros', 'leandro@gmail.com', '$2y$10$MASOEfkF8XxxA/GHx9NLhuTRvsZliefEtSsIMLfE6VmJebdQq1VEC');
 
 -- --------------------------------------------------------
 
@@ -164,7 +167,8 @@ INSERT INTO `tb_responsavel_aluno` (`matriculaAluno`, `idUsuario`) VALUES
 (1, 9),
 (1, 10),
 (1, 11),
-(2, 11);
+(2, 11),
+(2, 15);
 
 -- --------------------------------------------------------
 
@@ -196,15 +200,16 @@ CREATE TABLE `tb_turma` (
   `idTurma` int(11) NOT NULL,
   `Sala` int(11) NOT NULL,
   `Nome` varchar(45) DEFAULT NULL,
-  `Professor_Usuario_idUsuario` int(11) NOT NULL
+  `idProfessor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `tb_turma`
 --
 
-INSERT INTO `tb_turma` (`idTurma`, `Sala`, `Nome`, `Professor_Usuario_idUsuario`) VALUES
-(1, 233, '1a', 2);
+INSERT INTO `tb_turma` (`idTurma`, `Sala`, `Nome`, `idProfessor`) VALUES
+(1, 233, '1a', 2),
+(2, 12, '2b', 16);
 
 -- --------------------------------------------------------
 
@@ -227,13 +232,18 @@ INSERT INTO `tb_usuario` (`idUsuario`, `tipoUsuario`) VALUES
 (9, 1),
 (10, 1),
 (11, 1),
+(15, 1),
 (3, 2),
 (4, 2),
 (5, 2),
 (6, 2),
+(16, 2),
 (12, 3),
 (13, 3),
-(14, 3);
+(14, 3),
+(17, 3),
+(18, 3),
+(19, 3);
 
 --
 -- Índices para tabelas despejadas
@@ -244,7 +254,7 @@ INSERT INTO `tb_usuario` (`idUsuario`, `tipoUsuario`) VALUES
 --
 ALTER TABLE `tb_aluno`
   ADD PRIMARY KEY (`matriculaAluno`),
-  ADD KEY `Turma_idTurma` (`Turma_idTurma`);
+  ADD KEY `Turma_idTurma` (`idTurma`);
 
 --
 -- Índices de tabela `tb_comunicado`
@@ -300,7 +310,7 @@ ALTER TABLE `tb_tipo_usuario`
 --
 ALTER TABLE `tb_turma`
   ADD PRIMARY KEY (`idTurma`),
-  ADD KEY `Professor_Usuario_idUsuario` (`Professor_Usuario_idUsuario`);
+  ADD KEY `Professor_Usuario_idUsuario` (`idProfessor`);
 
 --
 -- Índices de tabela `tb_usuario`
@@ -323,25 +333,25 @@ ALTER TABLE `tb_aluno`
 -- AUTO_INCREMENT de tabela `tb_comunicado`
 --
 ALTER TABLE `tb_comunicado`
-  MODIFY `idComunicado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idComunicado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `tb_responsavel`
 --
 ALTER TABLE `tb_responsavel`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `tb_turma`
 --
 ALTER TABLE `tb_turma`
-  MODIFY `idTurma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idTurma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `tb_usuario`
 --
 ALTER TABLE `tb_usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restrições para tabelas despejadas
@@ -351,7 +361,7 @@ ALTER TABLE `tb_usuario`
 -- Restrições para tabelas `tb_aluno`
 --
 ALTER TABLE `tb_aluno`
-  ADD CONSTRAINT `tb_aluno_ibfk_1` FOREIGN KEY (`Turma_idTurma`) REFERENCES `tb_turma` (`idTurma`);
+  ADD CONSTRAINT `tb_aluno_ibfk_1` FOREIGN KEY (`idTurma`) REFERENCES `tb_turma` (`idTurma`);
 
 --
 -- Restrições para tabelas `tb_comunicado`

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include(__DIR__ . "/conecta_db.php");
 
 if (
@@ -16,6 +17,13 @@ if (
         die("As senhas não coincidem.");
     }
 
+    $regexSenhaForte = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/';
+
+    if (!preg_match($regexSenhaForte, $senha)) {
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e símbolo.'];
+        header("Location: ../FRONT/html/paginaCadastroProfessor.html");
+        exit;
+    }
     $oMysql = conecta_db();
 
     //verifica se o usuario ja possui conta
@@ -44,14 +52,19 @@ if (
         $stmt->bind_param("sssi", $nome, $email, $senhaHash, $idUsuario);
 
         if ($stmt->execute()) {
+            $_SESSION['mensagem'] = ['tipo' => 'sucess', 'texto' => 'Professor cadastrado'];
             header("Location: ../FRONT/html/paginaProfessor.php");
             exit;
         } else {
-            echo "Erro ao cadastrar professor: " . $stmt->error;
+            $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar Professor'];
+        header("Location: ../FRONT/html/paginaCadastroProfessor.html");
+        exit;
         }
         $stmt->close();
     } else {
-        echo "Erro ao cadastrar usuário: " . $oMysql->error;
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar usuario'];
+        header("Location: ../FRONT/html/paginaCadastroProfessor.html");
+        exit;
     }
 
     $oMysql->close();

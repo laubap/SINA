@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Inserção no banco
-    $sql = "INSERT INTO tb_turma (Nome, Sala, Professor_Usuario_idUsuario) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO tb_turma (Nome, Sala, idProfessor) VALUES (?, ?, ?)";
     $stmt = $oMysql->prepare($sql);
     $stmt->bind_param("sii", $nomeTurma, $sala, $idProfessor);
     
