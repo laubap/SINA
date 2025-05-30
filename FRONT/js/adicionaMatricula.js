@@ -8,3 +8,4 @@ function adicionarCampo() {
   input.placeholder = 'Digite a matrícula do aluno';
   container.appendChild(input);
 }
+

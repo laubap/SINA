@@ -34,6 +34,11 @@
             <form action="http://localhost/SINA/BACK/cadastroResponsavel.php" method="POST">
                 <input type="text" name="nomeResponsavel" class="inputLogin" placeholder="Digite o seu nome" required>
                 <input type="email" name="emailResponsavel" class="inputLogin" placeholder="Digite o seu email" required>
+                <div class="form-group">
+                    <input type="tel" name="telefoneResponsavel" class="inputLogin" 
+                       pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" 
+                       placeholder="(99) 99999-9999" required>
+                </div>
                 <div id="matriculaContainer" class="grupo-matriculas">
                     <input type="text" name="matriculaAluno[]" class="inputLogin" placeholder="Digite a matrícula do aluno" required>
                   </div>
@@ -48,5 +53,6 @@
     </div>
 
     <script src="../js/adicionaMatricula.js"></script>
+    <script src="../js/formatarTelefone.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ $idTurma = intval($_GET['id']);
 $oMysql = conecta_db();
 
 // Verifica se a turma tem alunos vinculados
-$temAlunos = $oMysql->query("SELECT COUNT(*) as total FROM tb_aluno WHERE Turma_idTurma = $idTurma")->fetch_assoc()['total'];
+$temAlunos = $oMysql->query("SELECT COUNT(*) as total FROM tb_aluno WHERE idTurma = $idTurma")->fetch_assoc()['total'];
 
 if ($temAlunos > 0) {
     $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Não é possível excluir turma com alunos vinculados'];

@@ -37,7 +37,7 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
         }
         $sql = "SELECT *
                 FROM tb_aluno
-                WHERE Turma_idTurma =".$_SESSION['idTurmaSelecionada']."
+                WHERE idTurma =".$_SESSION['idTurmaSelecionada']."
                 ORDER BY nomeAluno ASC";
     }
 
@@ -66,7 +66,7 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
     
     if($_SESSION['tipoUsuario'] == 1){
     ?>
-    <form method="POST" action="../../BACK/set_aluno.php" style="display: inline;">
+    <form method="POST" action="conteudo/paginaAluno.php" style="display: inline;">
         <input type="hidden" name="matriculaAluno" value="<?= $aluno['matriculaAluno'] ?>">
         <button type="submit" class="card-turma">
             <div class="avatar-container">

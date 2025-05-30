@@ -173,3 +173,21 @@ body {
     width: 100%; 
     border-radius: 10px;
 } */
+
+.telefoneinput[type="tel"].inputLogin {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input[type="tel"].inputLogin:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+    outline: none;
+}

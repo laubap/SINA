@@ -10,13 +10,15 @@ if (
     isset($_POST['emailResponsavel']) &&
     isset($_POST['senhaResponsavel']) &&
     isset($_POST['confirmaSenha']) &&
-    isset($_POST['matriculaAluno'])
+    isset($_POST['matriculaAluno']) &&
+    isset($_POST['telefoneResponsavel'])
 ) {
     $nome     = $_POST['nomeResponsavel'];
     $email    = $_POST['emailResponsavel'];
     $senha    = $_POST['senhaResponsavel'];
     $confirma = $_POST['confirmaSenha'];
-    $matriculas = $_POST['matriculaAluno']; // ← agora é array
+    $telefone = $_POST['telefoneResponsavel'];
+    $matriculas = $_POST['matriculaAluno']; 
 
     if ($senha !== $confirma) {
         die("As senhas não coincidem.");
@@ -33,18 +35,25 @@ if (
     $oMysql = conecta_db();
 
     // Verifica duplicidade de e-mail
-    $verificaEmail = $oMysql->prepare("SELECT COUNT(*) FROM tb_responsavel WHERE emailResponsavel = ?");
-    $verificaEmail->bind_param("s", $email);
+    $verificaEmail = $oMysql->prepare("SELECT COUNT(*) FROM tb_responsavel WHERE emailResponsavel = ? OR telefoneResponsavel = ?");
+    $verificaEmail->bind_param("ss", $email, $telefone);
     $verificaEmail->execute();
     $verificaEmail->bind_result($existe);
     $verificaEmail->fetch();
     $verificaEmail->close();
 
     if ($existe > 0) {
-        die("Este e-mail já está cadastrado.");
+        die("E-mail ou telefone já cadastrados.");
     }
 
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    // Após as outras validações
+    if (!preg_match('/^\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$/', $telefone)) {
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Formato de telefone inválido. Use (99) 99999-9999'];
+        header("Location: ../FRONT/html/paginaCadastroResponsavel.html");
+        exit;
+    }
 
     // Insere na tb_usuario
     $sqlUsuario = "INSERT INTO tb_usuario (tipoUsuario) VALUES (1)";
@@ -52,9 +61,9 @@ if (
         $idUsuario = $oMysql->insert_id;
 
         // Insere na tb_responsavel
-        $stmt = $oMysql->prepare("INSERT INTO tb_responsavel (nomeResponsavel, emailResponsavel, senhaResponsavel, idUsuario)
-                                  VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $nome, $email, $senhaHash, $idUsuario);
+        $stmt = $oMysql->prepare("INSERT INTO tb_responsavel (nomeResponsavel, emailResponsavel, senhaResponsavel, telefoneResponsavel, idUsuario)
+                                  VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssi", $nome, $email, $senhaHash, $telefone, $idUsuario);
         if ($stmt->execute()) {
             $stmt->close();
 
@@ -77,20 +86,19 @@ if (
             }
             $_SESSION['mensagem'] = ['tipo' => 'sucess', 'texto' => 'Responsável cadastrado'];
             header("Location: ../FRONT/html/paginaResponsavel.php");
+            $oMysql->close();
             exit;
 
         } else {
             $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar responsável'];
             header("Location: ../FRONT/html/paginaCadastroResponsavel.html");
+            $oMysql->close();
             exit;
         }
-
-    } else {
-        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar usuário'];
-            header("Location: ../FRONT/html/paginaCadastroResponsavel.html");
-            exit;
     }
 
     $oMysql->close();
+}
+?>
 }
 ?>

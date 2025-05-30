@@ -84,7 +84,7 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
                                 <a href="conteudo/editarTurma.php?id=<?= $turma['idTurma'] ?>" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <a href="excluirTurma.php?id=<?= $turma['idTurma'] ?>" class="btn btn-sm btn-danger" 
+                                <a href="../html/conteudo/excluirTurma.php?id=<?= $turma['idTurma'] ?>" class="btn btn-sm btn-danger" 
                                 onclick="return confirm('Tem certeza que deseja excluir esta turma?')">
                                     <i class="fas fa-trash"></i> Excluir
                                 </a>

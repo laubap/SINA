@@ -102,21 +102,20 @@ if (
         if ($stmt->execute()) {
             $_SESSION['tipoUsuario'] = 3;
             $_SESSION['mensagem'] = ['tipo' => 'sucess', 'texto' => 'Coordenador cadastrado'];
+            $stmt->close();
             header("Location: ../FRONT/html/paginaCoordenador.php");
             exit;
         } else {
             $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar coordenador'];
+            $stmt->close();
             header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
             exit;
         }
-
-        $stmt->close();
     } else {
         $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao cadastrar usuário'];
             header("Location: ../FRONT/html/paginaCadastroCoordenador.html");
             exit;
     }
 
-    $db->close();
 }
 ?>
