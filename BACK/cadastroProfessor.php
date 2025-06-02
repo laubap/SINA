@@ -52,6 +52,7 @@ if (
         $stmt->bind_param("sssi", $nome, $email, $senhaHash, $idUsuario);
 
         if ($stmt->execute()) {
+            $_SESSION['tipoUsuario'] = 2;
             $_SESSION['mensagem'] = ['tipo' => 'sucess', 'texto' => 'Professor cadastrado'];
             header("Location: ../FRONT/html/paginaProfessor.php");
             exit;

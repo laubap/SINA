@@ -84,6 +84,7 @@ if (
 
                 $check->close();
             }
+            $_SESSION['tipoUsuario'] = 1;
             $_SESSION['mensagem'] = ['tipo' => 'sucess', 'texto' => 'Responsável cadastrado'];
             header("Location: ../FRONT/html/paginaResponsavel.php");
             $oMysql->close();
@@ -98,7 +99,5 @@ if (
     }
 
     $oMysql->close();
-}
-?>
 }
 ?>

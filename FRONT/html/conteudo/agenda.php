@@ -67,10 +67,6 @@ include "../../../PROJETO/conecta_db.php";
     #responsável
 
     if($_SESSION['tipoUsuario'] == 1){
-        if (!isset($_SESSION['alunoSelecionado'])) {
-            $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Nenhum aluno selecionado'];
-            exit;
-        }
         $sql = "SELECT 
                 c.*, p.nomeProfessor, t.nome as nomeTurma
                 FROM tb_comunicado c
@@ -79,7 +75,6 @@ include "../../../PROJETO/conecta_db.php";
                 JOIN tb_aluno a ON a.idTurma = t.idTurma
                 JOIN tb_responsavel_aluno ra ON ra.matriculaAluno = a.matriculaAluno
                 WHERE ra.idUsuario = ".$_SESSION['usuario']."
-                AND a.matriculaAluno =".$_SESSION['alunoSelecionado']."
                 ORDER BY c.Data DESC";
     
     }
