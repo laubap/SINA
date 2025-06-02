@@ -10,7 +10,7 @@
             case 1: header('Location: ../paginaResponsavel.php'); break;
             case 2: header('Location: ../paginaProfessor.php'); break;
             case 3: header('Location: ../paginaCoordenador.php'); break;
-            default: header('Location: ../index.php');
+            default: header('Location: ../index.html');
         }
         exit;
     }

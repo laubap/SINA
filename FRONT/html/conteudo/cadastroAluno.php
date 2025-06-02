@@ -1,6 +1,16 @@
 <div class="pagina">
 <?php
 session_start();
+
+// Verifica se o usuário está logado
+if(!isset($_SESSION['tipoUsuario']) || !isset($_SESSION['usuario'])) {
+    $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Usuário não logado'];
+    header("Location: ../loginbase.html");
+    exit;
+}
+
+
+
 include "../../../PROJETO/conecta_db.php";
 $oMysql = conecta_db(); 
 

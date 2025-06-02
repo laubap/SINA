@@ -16,6 +16,14 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
 
     <?php
     session_start();
+
+
+    if(!isset($_SESSION['tipoUsuario']) || !isset($_SESSION['usuario'])) {
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Usuário não logado'];
+        header("Location: ../loginbase.html");
+        exit;
+    }
+
     include "../../../BACK/conecta_db.php";
     $oMysql = conecta_db(); 
 

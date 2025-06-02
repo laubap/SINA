@@ -25,6 +25,13 @@
 
     session_start();
 
+    // Verifica se o usuário está logado
+    if(!isset($_SESSION['tipoUsuario']) || !isset($_SESSION['usuario'])) {
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Usuário não logado'];
+        header("Location: ../loginbase.html");
+        exit;
+    }
+
 #PERFIS DE USUÁRIO
 #RESPONSAVEL
 

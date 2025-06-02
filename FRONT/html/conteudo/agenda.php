@@ -29,6 +29,12 @@ include "../../../PROJETO/conecta_db.php";
 
     session_start();
 
+    if(!isset($_SESSION['tipoUsuario']) || !isset($_SESSION['usuario'])) {
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Usuário não logado'];
+        header("Location: ../loginbase.html");
+        exit;
+    }
+
     #Comando php para botão "criar comunicado" aparecer somente para professor
 
     if($_SESSION['tipoUsuario'] == 2)

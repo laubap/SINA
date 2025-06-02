@@ -14,7 +14,9 @@ if (
     $confirma = $_POST['confirmaSenha'];
 
     if ($senha !== $confirma) {
-        die("As senhas não coincidem.");
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'As senhas não coincidem'];
+        header("Location: ../FRONT/html/paginaCadastroProfessor.html");
+        exit;
     }
 
     $regexSenhaForte = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/';
@@ -35,7 +37,9 @@ if (
     $verificaEmail->close();
 
     if ($existe > 0) {
-        die("Este e-mail já está cadastrado.");
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Email já cadastrado'];
+        header("Location: ../FRONT/html/paginaCadastroProfessor.html");
+        exit;
     }
 
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);

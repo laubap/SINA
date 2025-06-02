@@ -23,7 +23,9 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
 
     // Verifica se o usuário está logado
     if(!isset($_SESSION['tipoUsuario']) || !isset($_SESSION['usuario'])) {
-        die("Acesso não autorizado");
+        $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Usuário não logado'];
+        header("Location: ../loginbase.html");
+        exit;
     }
 
     // Prepara a consulta SQL conforme o tipo de usuário
