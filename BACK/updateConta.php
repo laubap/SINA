@@ -10,11 +10,21 @@
 			$oMysql = conecta_db();
 			$nome = $_POST['nomeResponsavel'];
 			$email = $_POST['emailResponsavel'];
-			$senha = password_hash($_POST['senhaResponsavel'], PASSWORD_DEFAULT);
+			$senha = $_POST['senhaResponsavel'];
+
+			$regexSenhaForte = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/';
+
+    		if (!preg_match($regexSenhaForte, $senha)) {
+    		    $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e símbolo.'];
+    		    header("Location: ../FRONT/html/paginaResponsavel.php");
+    		    exit;
+			}
+			$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
 			$query = "UPDATE tb_responsavel 
 				SET nomeResponsavel = '$nome',
 					emailResponsavel = '$email',
-					senhaResponsavel = '$senha'
+					senhaResponsavel = '$senhaHash'
 				WHERE idUsuario = ".$_SESSION['usuario'];
 			$resultado = $oMysql->query($query);
 			$_SESSION['mensagem'] = ['tipo' => 'sucesso', 'texto' => 'Perfil editado'];
@@ -32,11 +42,21 @@
 			$oMysql = conecta_db();
 			$nome = $_POST['nomeProfessor'];
 			$email = $_POST['emailProfessor'];
-			$senha = password_hash($_POST['senhaProfessor'], PASSWORD_DEFAULT);
+			$senha = $_POST['senhaProfessor'];
+
+			$regexSenhaForte = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/';
+
+    		if (!preg_match($regexSenhaForte, $senha)) {
+    		    $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e símbolo.'];
+    		    header("Location: ../FRONT/html/paginaProfessor.php");
+    		    exit;
+			}
+			$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
 			$query = "UPDATE tb_professor 
 				SET nomeProfessor = '$nome',
 					emailProfessor = '$email',
-					senhaProfessor = '$senha'
+					senhaProfessor = '$senhaHash'
 				WHERE idUsuario = ".$_SESSION['usuario'];
 			$resultado = $oMysql->query($query);
 			$_SESSION['mensagem'] = ['tipo' => 'sucesso', 'texto' => 'Perfil editado'];
@@ -52,11 +72,21 @@
 			$oMysql = conecta_db();
 			$nome = $_POST['nomeCoordenador'];
 			$email = $_POST['emailCoordenador'];
-			$senha = password_hash($_POST['senhaCoordenador'], PASSWORD_DEFAULT);
+			$senha = $_POST['senhaCoordenador'];
+
+			$regexSenhaForte = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/';
+
+    		if (!preg_match($regexSenhaForte, $senha)) {
+    		    $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e símbolo.'];
+    		    header("Location: ../FRONT/html/paginaCoordenador.php");
+    		    exit;
+			}
+			$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
 			$query = "UPDATE tb_coordenador 
 				SET nomeCoordenador = '$nome',
 					emailCoordenador = '$email',
-					senhaCoordenador = '$senha'
+					senhaCoordenador = '$senhaHash'
 				WHERE idUsuario = ".$_SESSION['usuario'];
 			$resultado = $oMysql->query($query);
 			$_SESSION['mensagem'] = ['tipo' => 'sucesso', 'texto' => 'Perfil editado'];
