@@ -4,7 +4,7 @@ include(__DIR__ . "/conecta_db.php");
 $oMysql = conecta_db(); 
 
 // Configurações do upload
-$pastaDestino = __DIR__ . '/../PROJETO/uploads/alunos/';
+$pastaDestino = __DIR__ . '../../PROJETO/uploads/alunos/';
 $tamanhoMaximo = 2 * 1024 * 1024; // 2MB
 $extensoesPermitidas = ['jpg', 'jpeg', 'png', 'gif'];
 
