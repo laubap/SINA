@@ -67,6 +67,14 @@
         
         if ($stmt->execute()) {
             $_SESSION['mensagem'] = ['tipo' => 'sucesso', 'texto' => 'Ficha médica atualizada com sucesso!'];
+            if($_SESSION['tipoUsuario'] == 1){
+                header("Location: ../paginaResponsavel.php");
+                exit;
+            }
+            if($_SESSION['tipoUsuario'] == 3){
+                header("Location: ../paginaCoordenador.php");
+                exit;
+            }
         } else {
             $_SESSION['mensagem'] = ['tipo' => 'erro', 'texto' => 'Erro ao atualizar ficha médica: ' . $stmt->error];
         }
