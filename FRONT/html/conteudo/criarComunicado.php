@@ -16,7 +16,7 @@
 
 <?php
 session_start();
-include "../../../PROJETO/conecta_db.php";
+include "../../../BACK/conecta_db.php";
 $oMysql = conecta_db(); 
 
 if(isset($_POST['descricao'])){

@@ -41,6 +41,7 @@
     <div class="navegador">
       <img class="logo" src="../imagens/Sem título.jpeg" alt="Logo">
       <a href="#" class="nav-link" onclick="carregarConteudo('aluno')">Alunos</a>
+      <a href="#" class="nav-link" onclick="carregarConteudo('paginaAssociarAluno')">Associar Aluno</a>
       <a href="#" class="nav-link" onclick="carregarConteudo('agenda')">Agenda</a>
       <a href="#" class="nav-link" onclick="carregarConteudo('configuracoes')">Configurações</a>
       <a href="../../BACK/logout.php" class="nav-link">Sair</a>

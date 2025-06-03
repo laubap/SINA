@@ -11,7 +11,7 @@ if(!isset($_SESSION['tipoUsuario']) || !isset($_SESSION['usuario'])) {
 
 
 
-include "../../../PROJETO/conecta_db.php";
+include "../../../BACK/conecta_db.php";
 $oMysql = conecta_db(); 
 
 $turmas = $oMysql->query("SELECT * FROM tb_turma");

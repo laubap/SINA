@@ -17,8 +17,7 @@ integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+
     <?php
     session_start();
 
-    // Ajuste o caminho do include conforme sua estrutura
-    include "../../../PROJETO/conecta_db.php";
+    include "../../../BACK/conecta_db.php";
     $oMysql = conecta_db(); 
 
     // Verifica se o usuário está logado

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../PROJETO/conecta_db.php";
+include "conecta_db.php";
 
 // Verifica se é coordenador
 if ($_SESSION['tipoUsuario'] != 3) {

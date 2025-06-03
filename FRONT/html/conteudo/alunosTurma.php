@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../../../PROJETO/conecta_db.php";
+include "../../../BACK/conecta_db.php";
 
 // Verifica se há uma turma selecionada
 if (!isset($_SESSION['idTurmaSelecionada'])) {

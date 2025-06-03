@@ -21,7 +21,7 @@
 
     <?php
 
-include "../../../PROJETO/conecta_db.php";
+include "../../../BACK/conecta_db.php";
 
     $oMysql = conecta_db(); 
 
